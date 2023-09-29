@@ -71,23 +71,35 @@ addColumnButton.addEventListener('click', () => {
 	});
 
 	deleteIcon.addEventListener('click', () => {
-		if (
-			confirm(`Are you sure you want to delete this ${h4.textContent} board?`)
-		) {
+		if (confirm(`Are you sure you want to delete ${h4.textContent} board?`)) {
 			kanbanBoard.remove();
 		}
 	});
 
 	const list1 = document.querySelectorAll('#items');
-	const list2 = document.getElementById('move');
+	const list2 = document.querySelector('.kanbanBoard ul');
+	// const list2 = document.querySelectorAll('#items');
+	const list3 = document.getElementById('move');
 
 	list1.forEach((lis) => {
 		const sortable1 = new Sortable(lis, {
 			animation: 150,
+			group: 'shared',
 		});
 	});
 
 	const sortable2 = new Sortable(list2, {
+		animation: 150,
+		group: 'shared',
+	});
+	// list2.forEach((lis) => {
+	// 	const sortable2 = new Sortable(list2, {
+	// 		animation: 150,
+	// 		group: 'shared',
+	// 	});
+	// });
+
+	const sortable3 = new Sortable(list3, {
 		animation: 150,
 	});
 });
